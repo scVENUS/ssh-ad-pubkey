@@ -1,0 +1,68 @@
+# ldifde –i –f <Path>\sshpublickey.ldif –b <username> <domain> <password> -k –j . –c "CN=schema,CN=Configuration,DC=X" #schemaNamingContext
+# ldifde –i –f  c:\scripts\sshpublickey.ldf -k –j . –c "CN=schema,CN=Configuration,DC=X" #schemaNamingContext
+
+# Attributes 
+
+dn: CN=sshPublicKey,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemaadd
+objectClass: top
+objectClass: attributeSchema
+attributeID: 1.3.6.1.4.1.24552.500.1.1.1.13
+isSingleValued: FALSE
+cn: sshPublicKey
+name: sshPublicKey
+lDAPDisplayName: sshPublicKey
+adminDisplayName: sshPublicKey
+adminDescription: OpenSSH Public Key
+attributeSyntax: 2.5.5.10
+oMSyntax: 4
+searchFlags: 1
+isMemberOfPartialAttributeSet: TRUE
+systemOnly: FALSE
+
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+# Classes
+
+dn: CN=ldapPublicKey,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemaadd
+objectClass: top
+objectClass: classSchema
+cn: ldapPublicKey
+governsID: 1.3.6.1.4.1.24552.500.1.1.2.0
+mayContain: sshPublicKey
+name: ldapPublicKey
+lDAPDisplayName: ldapPublicKey
+adminDisplayName: ldapPublicKey
+adminDescription: OpenSSH ldapPublicKey
+rDNAttID: cn
+objectClassCategory: 3
+systemOnly: FALSE
+
+
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+
+# Link
+
+dn: CN=User,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemamodify
+add: auxiliaryClass
+auxiliaryClass: ldapPublicKey
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
