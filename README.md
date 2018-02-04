@@ -10,6 +10,9 @@ At the time of writing the code it wasn't clear to me that the option Authorized
 ## For what?
 Good question. Currently we must wait because it makes no sense to administrate SSH Public Keys for Linux and Mac under Windows :-(
 
+## To start
+However, if you are interest the take a look to the file ssh-ad-pubkey.pdf in the directory doc.
+
 ## Links
 https://github.com/jirutka/ssh-ldap-pubkey
 
