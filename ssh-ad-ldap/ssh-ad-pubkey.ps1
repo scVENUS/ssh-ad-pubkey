@@ -240,10 +240,6 @@ function find-CustomObjectinUser
   
     # Retrieve the Schema naming context, the distinguished name of the Schema container in AD.
     $schemaNC = $rootDSE.Properties["schemaNamingContext"][0]
- 
-    # Bind to the Schema object.
-    $Schema = [System.DirectoryServices.DirectoryEntry]([System.DirectoryServices.DirectoryEntry]"LDAP://$SchemaNC")
-   
     # Create DirectorySearcher object
     $ADSearcher = New-Object DirectoryServices.DirectorySearcher
     # Filter on the LDAPDisplayName attribute
