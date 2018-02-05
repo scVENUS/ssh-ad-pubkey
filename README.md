@@ -8,11 +8,11 @@ With Windows 10 Build 1709 and Windows Server 2016 the  OpenSSH client and serve
 At the time of writing the code it wasn't clear to me that the option AuthorizedKeysCommand is out of project scope because Windows don't support a fork. This is why you can't use a wrapper for OpenSSH server under Windows who fetch the SSH Public Key of the user!
 
 ## For what?
-Good question. Currently we must wait because it makes no sense to administrate SSH Public Keys for Linux and Mac under Windows :-(
+Good question. Currently we must wait because it makes no sense to administrate SSH Public Keys for Linux and Mac under Windows. 😉
 
 ## Install
 However, if you are still interest then take a look to the file ssh-ad-pubkey.pdf in the directory doc.
-
+   
 There are the following steps to do:
 
 1. Extend the Active Directrory
