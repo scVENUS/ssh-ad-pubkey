@@ -15,10 +15,34 @@ However, if you are still interest then take a look to the file ssh-ad-pubkey.pd
    
 There are the following steps to do:
 
-1. Extend the Active Directrory
+1. Extend the Active Directrory schema
 1. Optional: Delegate the rights to change the SSH Public Key to the users for self serving.
 1. Execute the PowerShell script ssh-ad-pubkey to manage the SSH Public Key in Active Directory
 
+### Prerequisites
+For Installation of the schema extention must be member of Schema Admins. You need Domain Admin or equivalent rights for the optional delegation task. The same is true to add, remove or change the SSH Public Key for other users.
+
+**_Note_** </Br>
+To use Powershell with the ssh protocol you have th add a PowerShell subsystem entry into  `sshd_config` file. </Br>
+https://docs.microsoft.com/en-us/powershell/scripting/core-powershell/ssh-remoting-in-powershell-core?view=powershell-5.1
+ 
+
+### Testing
+Start Windows PowerShell or PowerShell Core. First check whether the schema is correct
+```
+PS C:\scripts> .\ssh-ad-pubkey.ps1 -check
+Customized AD Schema is OK!
+```
+Add your public SSH Key to Active Dricetory, which was created before with the command `ssh-keygen –t ed25519`    
+```
+PS C:\scripts> .\ssh-ad-pubkey.ps1 -add -filepath C:\Users\`<xxx>`\.ssh\id_ed25519.pub 
+```
+List your key(s) in Active Directory
+```
+PS C:\scripts> .\ssh-ad-pubkey.ps1 -list
+<xxx> has 1 SSH Public Key(s) in AD:
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC/W0JyvJut/Tlro2JR8aOsonHEAOTNSU1PVjTUz60i9 <xxx>@domain@host 
+```
 
 ## Links
 https://github.com/jirutka/ssh-ldap-pubkey
@@ -42,4 +66,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 * [Jirutka](https://github.com/jirutka) for inspiration 
+
 
