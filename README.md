@@ -33,6 +33,13 @@ https://blog.laslabs.com/2016/08/storing-ssh-keys-in-active-directory/
 
 https://blog.laslabs.com/2017/04/managing-ssh-keys-stored-in-active-directory/
 
+https://github.com/PowerShell/PowerShell
 
+https://github.com/markekraus/PSCoreWindowsCompat
 
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+## Acknowledgments
+* [Jirutka](https://github.com/jirutka) for inspiration 
 
