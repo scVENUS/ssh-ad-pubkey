@@ -10,8 +10,15 @@ At the time of writing the code it wasn't clear to me that the option Authorized
 ## For what?
 Good question. Currently we must wait because it makes no sense to administrate SSH Public Keys for Linux and Mac under Windows :-(
 
-## To start
-However, if you are interest the take a look to the file ssh-ad-pubkey.pdf in the directory doc.
+## Install
+However, if you are still interest then take a look to the file ssh-ad-pubkey.pdf in the directory doc.
+
+There are the following steps to do:
+
+1. Extend the Active Directrory
+1. Optional: Delegate the rights to change the SSH Public Key to the users for self serving.
+1. Execute the PowerShell script ssh-ad-pubkey to manage the SSH Public Key in Active Directory
+
 
 ## Links
 https://github.com/jirutka/ssh-ldap-pubkey
