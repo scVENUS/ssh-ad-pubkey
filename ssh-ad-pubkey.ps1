@@ -264,7 +264,7 @@ function find-CustomObjectinUser
 }
 
 
-function check-CustomizedSchema
+function test-CustomizedSchema
 {
  
   $a = find-ADProperty "sshPublicKey"
@@ -428,7 +428,7 @@ function show-FileSSHPublicKey
   }
 }
 
-function change-ADSSHPublicKey
+function update-ADSSHPublicKey
 {
   Param([System.DirectoryServices.AccountManagement.UserPrincipal] $u,
         [ValidateNotNullOrEmpty()]
@@ -441,7 +441,7 @@ function change-ADSSHPublicKey
    {   
      if ($act -eq "add")
      { 
-       $s=($u.GetUnderlyingObject()).Properties["sshpublickey"].Add($octets) 
+       ($u.GetUnderlyingObject()).Properties["sshpublickey"].Add($octets) | Out-Null 
      }
      else 
      {
@@ -516,7 +516,7 @@ function get-UserFromAD
  }
 
 
-function list-sshkeys
+function show-sshkeys
 {
   if ($filepath) 
   { 
@@ -538,7 +538,7 @@ function list-sshkeys
 }
 
 
-function change-sshkey
+function update-sshkey
 {
    $err = $false
    # first get ssh keys from file or console 
@@ -569,7 +569,7 @@ function change-sshkey
      $user = get-UserFromAD
      if ($user)
      {
-        change-ADSSHPublicKey $user $f $action
+        update-ADSSHPublicKey $user $f $action
      }
      else
      {
@@ -580,7 +580,7 @@ function change-sshkey
 
 }
 
-function delete-sshkeys
+function remove-sshkeys
 {
    # Get User 
    $user = get-UserFromAD
@@ -600,9 +600,9 @@ function delete-sshkeys
 
 switch ($action)
 {
-  "list"      { list-sshkeys}                       
-  "add"       { change-sshkey}
-  "remove"    { change-sshkey}
-  "clear"     { delete-sshkeys}
-  "check"     { check-CustomizedSchema }
+  "list"      { show-sshkeys}                       
+  "add"       { update-sshkey}
+  "remove"    { update-sshkey}
+  "clear"     { remove-sshkeys}
+  "check"     { test-CustomizedSchema }
 }
